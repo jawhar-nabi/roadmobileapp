@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:roadapp/screens/home_screen.dart';
-import 'package:roadapp/screens/signup_screen.dart';
+import 'package:roadapp/screens/login_screen.dart';
 import 'package:roadapp/widgets/inputTextWidget.dart';
 import 'package:roadapp/resources/app_colors.dart';
 
-class LoginScreen extends StatefulWidget {
-  LoginScreen() : super();
+class SignupScreen extends StatefulWidget {
+  SignupScreen() : super();
 
   @override
   _SearchScreenState createState() => _SearchScreenState();
 }
 
-class _SearchScreenState extends State<LoginScreen> {
+class _SearchScreenState extends State<SignupScreen> {
   final TextEditingController _pwdController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   //final snackBar = SnackBar(content: Text('email ou mot de passe incorrect'));
@@ -38,19 +37,19 @@ class _SearchScreenState extends State<LoginScreen> {
         children: <Widget>[
           Container(
             //decoration: BoxDecoration(color: Colors.yellow),
-            margin: const EdgeInsets.only(top: 150.0),
+            margin: const EdgeInsets.only(top: 70.0),
             alignment: Alignment.center,
             child: const Text(
               'RoadMobileApp',
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: AppColors.primaryColor,
-                  fontSize: 40.0,
+                  fontSize: 35.0,
                   fontWeight: FontWeight.bold),
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 100.0),
+            margin: const EdgeInsets.only(top: 60.0),
             child: InputTextWidget(
                 controller: _emailController,
                 labelText: "Adresse Email",
@@ -59,43 +58,44 @@ class _SearchScreenState extends State<LoginScreen> {
                 keyboardType: TextInputType.emailAddress),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 70.0),
+            margin: const EdgeInsets.only(top: 35.0),
+            child: const InputTextWidget(
+                //controller: _pwdController,
+                labelText: "Nom",
+                icon: Icons.account_circle,
+                obscureText: true,
+                keyboardType: TextInputType.text),
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 35.0),
+            child: const InputTextWidget(
+                //controller: _pwdController,
+                labelText: "Date de naissance",
+                icon: Icons.date_range,
+                obscureText: true,
+                keyboardType: TextInputType.datetime),
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 35.0),
             child: InputTextWidget(
                 controller: _pwdController,
-                labelText: "Mots de Passe",
+                labelText: "Mot de Passe",
                 icon: Icons.lock,
                 obscureText: true,
                 keyboardType: TextInputType.text),
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 25.0, top: 20.0),
-            child: Align(
-                alignment: Alignment.topRight,
-                child: Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    onTap: () {},
-                    child: Text(
-                      "Mots de passe oublié ?",
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey[700]),
-                    ),
-                  ),
-                )),
-          ),
           SizedBox(
             height: 55.0,
           ),
+
           Container(
             height: 55.0,
             child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()),
-                      );
+              onPressed: () async {
+                if (_formKey.currentState!.validate()) {
+                  print("I ove tunisia");
+                }
+                //Get.to(ChoiceScreen());
               },
               style: ElevatedButton.styleFrom(
                 primary: Colors.white,
@@ -108,18 +108,18 @@ class _SearchScreenState extends State<LoginScreen> {
               ),
               child: Ink(
                 decoration: BoxDecoration(
-                    boxShadow: <BoxShadow>[
+                    boxShadow: const <BoxShadow>[
                       BoxShadow(
                           color: AppColors.primaryColor,
-                          offset: const Offset(1.1, 1.1),
+                          offset: Offset(1.1, 1.1),
                           blurRadius: 10.0),
                     ],
                     color: AppColors.primaryColor, // Color(0xffF05945),
                     borderRadius: BorderRadius.circular(12.0)),
                 child: Container(
                   alignment: Alignment.center,
-                  child: Text(
-                    "Sign In",
+                  child: const Text(
+                    "S'inscrire",
                     textAlign: TextAlign.center,
                     style: TextStyle(color: Colors.white, fontSize: 25),
                   ),
@@ -135,13 +135,10 @@ class _SearchScreenState extends State<LoginScreen> {
                   color: Colors.transparent,
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SignupScreen()),
-                      );
+                      Navigator.pop(context);
                     },
                     child: Text(
-                      "Créer un compte ",
+                      "Vous avez déjà un compte ?",
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
