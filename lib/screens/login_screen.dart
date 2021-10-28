@@ -27,11 +27,13 @@ class _SearchScreenState extends State<LoginScreen> {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      // appBar: AppBar(
-      //   // leading: Icon(Icons.arrow_back),
-      //   backgroundColor: Colors.transparent,
-      //   //elevation: 5.0,
-      // ),
+      appBar: AppBar(
+        title: Text("RoadMobileApp"),
+
+        // leading: Icon(Icons.arrow_back),
+        backgroundColor: Colors.black,
+        //elevation: 5.0,
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
@@ -93,9 +95,9 @@ class _SearchScreenState extends State<LoginScreen> {
             child: ElevatedButton(
               onPressed: () {
                 Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()),
-                      );
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                );
               },
               style: ElevatedButton.styleFrom(
                 primary: Colors.white,
